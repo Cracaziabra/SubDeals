@@ -2,3 +2,6 @@ spring:
   datasource:
     generate-unique-name: false
     name: zametki
+  data:
+    rest:
+      base-path: /menu

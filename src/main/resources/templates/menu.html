@@ -1,13 +1,28 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Menu</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <title>SubDeals</title>
+    <link rel="stylesheet" href="/styles/menuStyle.css">
 </head>
 <body>
-<img src="/images/prettycatinmenu.png"/>
-<h1>Menu</h1>
-<form th:method="GET" th:action="@{/notes}">
-    <input type="submit" value="Notes">
-</form>
+<div class="wrapper">
+    <div class="container">
+        <div class="menu">
+            <ul>
+                <li><img src="/images/prettycatinmenu.png"></li>
+                <li></li>
+                <li>
+                    <a th:href="@{/login}">Вход</a>
+                </li>
+                <li>
+                    <a th:href="@{/register}">Регистрация</a>
+                </li>
+            </ul>
+        </div>
+        <div class="content"></div>
+    </div>
+</div>
 </body>
 </html>
