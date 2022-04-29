@@ -34,10 +34,12 @@ public class SecurityConfig {
         return http
                 .authorizeRequests()
                 .mvcMatchers("/notes").hasRole("USER")
+                .mvcMatchers("/authmenu").hasRole("USER")
+                .mvcMatchers("/myprofile").hasRole("USER")
                 .mvcMatchers("/menu").permitAll()
                 .and()
                 .formLogin().loginPage("/login")
-                .defaultSuccessUrl("/notes", true)
+                .defaultSuccessUrl("/authmenu", true)
                 .and()
                 .csrf()
                 .ignoringAntMatchers("/h2-console/**")
@@ -45,6 +47,9 @@ public class SecurityConfig {
                 .headers()
                 .frameOptions()
                 .sameOrigin()
+                .and()
+                .logout()
+                .logoutSuccessUrl("/menu")
                 .and()
                 .build();
     }

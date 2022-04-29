@@ -1,11 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Notes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <title>SubDeals</title>
+    <link rel="stylesheet" href="/styles/menuStyle.css">
 </head>
 <body>
-<img src="/images/prettycatinmenu.png"/>
-<h1>Notes</h1>
+<div class="wrapper">
+    <div class="container">
+        <div class="menu">
+            <ul>
+                <li><img src="/images/prettycatinmenu.png"></li>
+                <li>
+                    <a th:href="@{/authmenu}">SubDeals</a>
+                </li>
+                <li>
+                    <a th:href="@{/notes}">Создать заметку</a>
+                </li>
+                <li>
+                    <a th:href="@{/myprofile}">Личный кабинет</a>
+                </li>
+            </ul>
+        </div>
+        <div class="content"></div>
+    </div>
+</div>
 </body>
 </html>

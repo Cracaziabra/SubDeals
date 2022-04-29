@@ -26,4 +26,13 @@ public class MenuController {
         return "menu";
     }
 
+    @GetMapping(value = "/authmenu")
+    public String showAuthmenu() {
+        return "authmenu";
+    }
+
+    @GetMapping(value = "/myprofile")
+    public String showProfile() {
+        return "myprofile";
+    }
 }

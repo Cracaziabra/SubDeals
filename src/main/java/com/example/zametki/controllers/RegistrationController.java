@@ -28,6 +28,6 @@ public class RegistrationController {
     @PostMapping
     public String processReg(RegisterForm form) {
         userRepo.save(form.toUser(encoder));
-        return "redirect:/login";
+        return "redirect:/authmenu";
     }
 }
