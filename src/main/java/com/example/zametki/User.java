@@ -1,20 +1,21 @@
 package com.example.zametki;
 
 import lombok.*;
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 
-@Entity
 @Data
+@Entity
 @NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
 @RequiredArgsConstructor
 public class User implements UserDetails, Serializable {
@@ -29,9 +30,25 @@ public class User implements UserDetails, Serializable {
     private final String username;
     private final String password;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Note> notes = new ArrayList<>();
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"));
+    }
+
+    public void addNote(Note note) {
+        this.notes.add(note);
+    }
+
+    public void replaceNote(Note oldversion, Note newversion) {
+        int index = notes.indexOf(oldversion);
+        notes.set(index, newversion);
+    }
+
+    public void deleteNote(Note note) {
+        notes.remove(note);
     }
 
     @Override
@@ -54,3 +71,4 @@ public class User implements UserDetails, Serializable {
         return true;
     }
 }
+

@@ -33,10 +33,13 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         return http
                 .authorizeRequests()
-                .mvcMatchers("/notes").hasRole("USER")
-                .mvcMatchers("/authmenu").hasRole("USER")
-                .mvcMatchers("/myprofile").hasRole("USER")
+//                .mvcMatchers("/notes").hasRole("USER")
+//                .mvcMatchers("/authmenu").hasRole("USER")
+//                .mvcMatchers("/myprofile").hasRole("USER")
                 .mvcMatchers("/menu").permitAll()
+                .mvcMatchers("/login").permitAll()
+                .mvcMatchers("/register").permitAll()
+                .mvcMatchers("/*").hasRole("USER")
                 .and()
                 .formLogin().loginPage("/login")
                 .defaultSuccessUrl("/authmenu", true)
