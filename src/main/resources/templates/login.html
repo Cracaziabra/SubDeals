@@ -2,21 +2,40 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Login</title>
+    <link rel="stylesheet" href="/styles/menuStyle.css">
 </head>
 <body>
-<img src="/images/prettycatinmenu.png"/>
-<h1>Login</h1>
-<p>New here? Click
-    <a th:href="@{/register}">here</a> to register.</p>
-<div th:if="${param.error}">Unable to login</div>
-<form method="POST" th:action="@{/login}" id="loginForm">
-    <label for="username">Username: </label>
-    <input type="text" name="username" id="username" /><br/>
+<div class="wrapper">
+    <div class="container">
+        <div class="menu">
+            <ul>
+                <li><img src="/images/prettycatinmenu.png"></li>
+                <li>
+                    <a th:href="@{/menu}">SubDeals</a>
+                </li>
+                <li>
+                    <a th:href="@{/menu}">Назад</a>
+                </li>
+                <li>
+                    <a th:href="@{/register}">Регистрация</a>
+                </li>
+            </ul>
+        </div>
+        <div class="login_content">
+            <h1>Авторизация</h1>
+            <p>Впервые здесь? Кликните <a th:href="@{/register}">сюда</a> чтобы зарегистрироваться.</p>
+            <div th:if="${param.error}">Неправильный логин или пароль</div>
+            <form method="POST" th:action="@{/login}" id="loginForm">
+                <label for="username">Логин: </label>
+                <input type="text" name="username" id="username" /><br/>
 
-    <label for="password">Password: </label>
-    <input type="password" name="password" id="password" /><br/>
+                <label for="password">Пароль: </label>
+                <input type="password" name="password" id="password" /><br/>
 
-    <input type="submit" value="Login"/>
-</form>
+                <input type="submit" value="Войти"/>
+            </form>
+        </div>
+    </div>
+</div>
 </body>
 </html>

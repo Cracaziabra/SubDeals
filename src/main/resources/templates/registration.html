@@ -3,22 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <title>Registration</title>
+    <link rel="stylesheet" href="/styles/menuStyle.css">
 </head>
 <body>
-<img src="/images/prettycatinmenu.png"/>
-<h1>Registration</h1>
-<form method="post" th:action="@{/register}" id="registerForm">
+<div class="wrapper">
+    <div class="container">
+        <div class="menu">
+            <ul>
+                <li><img src="/images/prettycatinmenu.png"></li>
+                <li>
+                    <a th:href="@{/menu}">SubDeals</a>
+                </li>
+                <li>
+                    <a th:href="@{/login}">Вход</a>
+                </li>
+                <li>
+                    <a th:href="@{/menu}">Назад</a>
+                </li>
+            </ul>
+        </div>
+        <div class="login_content">
+            <h1>Регистрация</h1>
+            <form method="post" th:action="@{/register}" id="registerForm" th:object="${testForm}">
 
-    <label for="username">Username: </label>
-    <input type="text" name="username"><br/>
+                <label for="username">Логин: </label>
+                <input type="text" th:field="*{username}">
+                <span
+                      th:if="${#fields.hasErrors('username')}"
+                      th:errors="*{username}">Name Error</span>
+                <br/>
+                <label for="password">Пароль: </label>
+                <input type="password" th:field="*{password}">
+                <span
+                        th:if="${#fields.hasErrors('password')}"
+                        th:errors="*{password}">Name Error</span>
+                <br/>
 
-    <label for="password">Password: </label>
-    <input type="password" name="password"><br/>
+                <label for="email">Email: </label>
+                <input type="email" th:field="*{email}">
+                <span
+                        th:if="${#fields.hasErrors('email')}"
+                        th:errors="*{email}">Name Error</span>
+                <br/>
 
-    <label for="email">Email: </label>
-    <input type="email" name="email"><br/>
-
-    <input type="submit" value="Register"/>
-</form>
+                <input type="submit" value="Зарегистрироваться"/>
+            </form>
+        </div>
+    </div>
+</div>
 </body>
 </html>
