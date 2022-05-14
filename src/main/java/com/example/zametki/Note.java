@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 @Data
 @Entity
@@ -20,5 +21,7 @@ public class Note implements Serializable {
 
     private Long changeId;
 
+//    private String name;
+//    private Date createdAt = new Date();
     private String text;
 }

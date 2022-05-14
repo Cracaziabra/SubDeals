@@ -32,11 +32,6 @@ public class AuthMenuController {
         return "authmenu";
     }
 
-    @GetMapping(value = "/myprofile")
-    public String showProfile() {
-        return "myprofile";
-    }
-
     @ModelAttribute(name = "note")
     public Note note() {
         return new Note();

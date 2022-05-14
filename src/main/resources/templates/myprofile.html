@@ -25,7 +25,36 @@
                 </li>
             </ul>
         </div>
-        <div class="content"></div>
+        <div class="login_content">
+            <form method="POST" th:action="@{/myprofile/updateUser}" th:object="${userForm}">
+
+                <label for="firstName">Имя: </label>
+                <input type="text" th:field="*{firstName}">
+                <br/>
+
+                <label for="secondName">Фамилия: </label>
+                <input type="text" th:field="*{secondName}">
+                <br/>
+
+                <label for="thirdName">Отчество: </label>
+                <input type="text" th:field="*{thirdName}">
+                <br/>
+
+                <label for="birthday">Дата рождения: </label>
+                <input th:type="date" th:value="2000-01-01" th:field="*{birthday}">
+                <br/>
+
+                <label for="age">Возраст: </label>
+                <input type="number" min="0" th:field="*{age}">
+                <br/>
+
+                <label for="description">О себе: </label>
+                <input type="text" th:field="*{description}">
+                <br/>
+
+                <button type="submit">Сохранить изменения</button>
+            </form>
+        </div>
     </div>
 </div>
 </body>

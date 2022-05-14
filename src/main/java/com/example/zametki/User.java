@@ -9,10 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 @Data
 @Entity
@@ -29,6 +26,12 @@ public class User implements UserDetails, Serializable {
     private final String email;
     private final String username;
     private final String password;
+    private String firstName;
+    private String secondName;
+    private String thirdName;
+    private Date birthday;
+    private Integer age;
+    private String description;
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<Note> notes = new ArrayList<>();
