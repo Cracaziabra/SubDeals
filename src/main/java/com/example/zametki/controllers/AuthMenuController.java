@@ -32,9 +32,23 @@ public class AuthMenuController {
         return "authmenu";
     }
 
+    @GetMapping(value = "/history")
+    public String showHistory() {
+        return "history";
+    }
+
     @ModelAttribute(name = "note")
     public Note note() {
         return new Note();
+    }
+
+    @ModelAttribute(name = "priorities")
+    public List<String> priorities() {
+        List<String> pros = new ArrayList<>();
+        pros.add("Очень важное");
+        pros.add("Важное");
+        pros.add("Обычное");
+        return pros;
     }
 
     @ModelAttribute(name = "notes")

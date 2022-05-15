@@ -21,7 +21,9 @@ public class Note implements Serializable {
 
     private Long changeId;
 
-//    private String name;
-//    private Date createdAt = new Date();
+    private String name = "Название заметки";
+    private Boolean isDeleted = false;
+    private String priority;
+    private Date createdAt = new Date();
     private String text;
 }

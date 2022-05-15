@@ -44,12 +44,22 @@ public class NoteController {
         return "redirect:/notes";
     }
 
+//    @PostMapping(value = "/returnnote")
+//    public String returnNote(@Valid Note note, @AuthenticationPrincipal User authUser) {
+//
+//        return "redirect:/notes";
+//    }
+
     @PostMapping(value = "/deletenote")
     public String updateNotes(Note note, @AuthenticationPrincipal User authUser) {
+//        User user = userRepo.findById(authUser.getId()).get();
+//        Note note1 = noteRepo.findById(note.getChangeId()).get();
+//        user.deleteNote(note1);
+//        noteRepo.delete(note1);
+//        userRepo.save(user);
         User user = userRepo.findById(authUser.getId()).get();
         Note note1 = noteRepo.findById(note.getChangeId()).get();
-        user.deleteNote(note1);
-        noteRepo.delete(note1);
+        user.hideNote(note1, noteRepo);
         userRepo.save(user);
         return "redirect:/notes";
     }

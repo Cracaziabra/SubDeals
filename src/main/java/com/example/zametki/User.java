@@ -1,5 +1,7 @@
 package com.example.zametki;
 
+import com.example.zametki.repos.NoteRepo;
+import com.example.zametki.repos.UserRepo;
 import lombok.*;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.security.core.GrantedAuthority;
@@ -33,6 +35,9 @@ public class User implements UserDetails, Serializable {
     private Integer age;
     private String description;
 
+    @Transient
+    private static Integer maxSavedDeletedNotes = 3;
+
     @OneToMany(cascade = CascadeType.ALL)
     private List<Note> notes = new ArrayList<>();
 
@@ -50,8 +55,24 @@ public class User implements UserDetails, Serializable {
         notes.set(index, newversion);
     }
 
-    public void deleteNote(Note note) {
+    public void hideNote(Note note, NoteRepo noteRepo) { //if false => on delete, if true => on recovery
+        if (!note.getIsDeleted()) {
+            Note firstOnDelete = null;
+            int count = 0;
+            for (Note note1 : notes) {
+                if (note1.getIsDeleted()) {
+                    count++;
+                    if (firstOnDelete == null) firstOnDelete = note1;
+                }
+            }
+            if (count == maxSavedDeletedNotes) {
+                notes.remove(firstOnDelete);
+                noteRepo.delete(noteRepo.findById(firstOnDelete.getChangeId()).get());
+            }
+        }
         notes.remove(note);
+        note.setIsDeleted(!note.getIsDeleted());
+        notes.add(note);
     }
 
     @Override

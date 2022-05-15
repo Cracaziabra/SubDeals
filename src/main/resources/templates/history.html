@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <title>SubDeals</title>
+    <link rel="stylesheet" href="/styles/menuStyle.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<div class="wrapper">
+    <div class="container">
+        <div class="menu">
+            <ul>
+                <li><img src="/images/prettycatinmenu.png"></li>
+                <li>
+                    <a th:href="@{/authmenu}">SubDeals</a>
+                </li>
+                <li>
+                    <a th:href="@{/notes}">Заметки</a>
+                </li>
+                <li>
+                    <a th:href="@{/myprofile}">Личный кабинет</a>
+                </li>
+            </ul>
+        </div>
+        <div class="content">
+            <div class="createnote">
+                <textarea readonly="readonly" class="info">Сервис хранит последние 3 удаленные заметки для восстановления. Если было удалено больше заметок, то первые удаленные будут безвозвратно утеряны.</textarea>
+            </div>
+            <div th:each="nota, i : ${notes}" class="createnote" th:if="${nota.isDeleted == true}">
+                <form th:method="POST" th:object="${note}" th:action="@{/deletenote}" class="noteform">
+                    <input type="hidden" th:name="changeId" th:value="${nota.id}">
+                    <input th:name="name" th:value="${nota.name}" readonly="readonly">
+                    <input th:value="${nota.priority}" readonly="readonly">
+                    <div th:text="${#dates.format(nota.createdAt, 'dd MMM yyyy HH:mm:ss')}"></div>
+                    <textarea th:name="text" th:value="${nota.text}" th:text="${nota.text}" th:id="${nota.id}" readonly="readonly"></textarea>
+                    <button>Восстановить</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
