@@ -10,14 +10,19 @@
 Использованные технологии: Java 11, Spring (Boot, MVC, Data, Security), H2-database, Thymeleaf.
 
 Скриншоты (пока без дизайна):
+
 Окно регистрации:
-![image](https://user-images.githubusercontent.com/69385617/168797542-53884cb0-8ce9-4f7e-8765-7af6d110d716.png)
+
+<image src="https://user-images.githubusercontent.com/69385617/168797542-53884cb0-8ce9-4f7e-8765-7af6d110d716.png" />
 
 Окно с заметками:
+
 ![image](https://user-images.githubusercontent.com/69385617/168798690-4a7e6548-6535-422d-a1d4-1d8e00aa1885.png)
 
 Окно с возможностью восстановить последние удаленные заметки:
+
 ![image](https://user-images.githubusercontent.com/69385617/168798847-55633fe4-8109-4a70-b698-2fa6d0a598de.png)
 
 База данных:
+
 ![image](https://user-images.githubusercontent.com/69385617/168799279-9715bdd1-1a0b-4ca8-9cac-5bab67ef7c38.png)
